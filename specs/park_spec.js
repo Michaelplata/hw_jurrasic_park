@@ -83,4 +83,21 @@ describe('Park', function() {
     assert.strictEqual(actual, 1022000);
   });
 
+  it('should be able to remove all dinosaurs of a particular species', function () {
+    park.addDinosaur(trex);
+    park.addDinosaur(trex2);
+    park.addDinosaur(triceratop);
+    park.removeAllbySpecies('t-rex');
+    const actual = park.collectionOfDinosaurs;
+    assert.deepStrictEqual(actual, [triceratop]);
+  });
+
+  it('should provide a summary of each diet type', function () {
+    park.addDinosaur(trex);
+    park.addDinosaur(trex2);
+    park.addDinosaur(triceratop);
+    const actual = park.dietTypeSummary();
+    assert.deepStrictEqual(actual, {'carnivore': 2, 'herbivore': 1})
+  })
+
 });
